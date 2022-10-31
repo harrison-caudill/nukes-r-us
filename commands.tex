@@ -1,0 +1,71 @@
+%% \newenvironment{packedEnum}{
+%% \begin{enumerate}
+%%   \setlength{\itemsep}{0pt}
+%%   \setlength{\parskip}{0pt}
+%%   \setlength{\parsep}{0pt}
+%% }{\end{enumerate}}
+
+%% \newenvironment{packedItem}{
+%% \begin{itemize}
+%%   \setlength{\itemsep}{0pt}
+%%   \setlength{\parskip}{0pt}
+%%   \setlength{\parsep}{0pt}
+%% }{\end{itemize}}
+
+%% \def\bul{$\bullet$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Confidential Border                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength\classifiedTextHeight
+\setlength\classifiedTextHeight{27pt} %% sigh...just...don't ask...
+
+\newlength\classifiedRtStart
+\setlength\classifiedRtStart{\paperwidth-0.5in-\classifiedTextHeight}
+
+%% Default arguments for the border
+\makeatletter
+\define@key{borderArgs}{leftText}{\def\leftText{#1}}
+\define@key{borderArgs}{rightText}{\def\rightText{#1}}
+\define@key{borderArgs}{borderOpacity}{\def\borderOpacity{#1}}
+\define@key{borderArgs}{borderColor}{\def\borderColor{#1}}
+\setkeys{borderArgs}{%%
+  leftText=Classified,
+  rightText=Classified,
+  borderOpacity=0.25,
+  borderColor=red
+}
+\makeatother
+
+\newcommand{\textBorder}[1][]{
+
+  \setkeys{borderArgs}{#1}
+
+  \begin{textblock*}{-3.1415in}(.25in, 0in)
+    \begin{turn}{90}
+      \parbox{\paperheight}{
+        \begin{center}
+          {\Huge
+            \bf
+            \transparent{\borderOpacity}
+            \color{\borderColor}
+            \leftText}
+        \end{center}
+      }
+    \end{turn}
+  \end{textblock*}
+  \begin{textblock*}{-3.1415in}(\classifiedRtStart, 0in)
+    \begin{turn}{-90}
+      \parbox{\paperheight}{
+        \begin{center}
+          {\Huge
+            \bf
+            \transparent{\borderOpacity}
+            \color{\borderColor}
+            \rightText}
+        \end{center}
+      }
+    \end{turn}
+  \end{textblock*}
+}
