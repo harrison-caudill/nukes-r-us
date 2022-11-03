@@ -3,6 +3,12 @@ PDFTEX  = docker run -ti \
 	-e TEXINPUTS=".:$(BUILD):" \
 	pdflatex \
 	pdflatex -halt-on-error
+BIBTEX  = docker run -ti \
+	-v `pwd`:/miktex/work \
+	-e TEXINPUTS=".:$(BUILD):" \
+	-e TEXMFOUTPUT="$(BUILD):" \
+	pdflatex \
+	bibtex
 BIBTEX  = bibtex
 PSPDF   = ps2pdf
 DIA     = dia
@@ -25,7 +31,11 @@ BUILD   = BUILD
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
 	$(PDFTEX) -output-directory $(BUILD) $<
+	$(BIBTEX) $(BUILD)/$*
+	$(PDFTEX) -output-directory $(BUILD) $<
 	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
+
+%.bar:
 	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
 
 

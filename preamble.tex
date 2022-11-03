@@ -32,7 +32,7 @@
 \usepackage{titlesec}		% allows us to customize the titles
 \usepackage{nicefrac}		% compact symbols for 1/2, etc.
 \usepackage{amsfonts}		% blackboard math symbols
-%%\usepackage{microtype}		% microtypography
+%%\usepackage{microtype}	% microtypography
 \usepackage{needspace}		% So we can prevent page breaks
 
 %%% Confidential Border && Version Number
@@ -75,6 +75,10 @@
 %% }{%%
 %%   \newwatermark[allpages,color=black!10,angle=45,scale=3,xpos=0,ypos=0]{\watermarkText{}}
 %% }
+
+%% Font selection
+\renewcommand{\rmdefault}{phv} %% Helvetica
+\fontfamily{\familydefault}
 
 %% We REALLY don't want it to have a bare section title.
 \widowpenalty=600
@@ -156,27 +160,43 @@
 %% Section Formatting                                                        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% \titleformat{\part}					% command
-%%             [hang]					% Shape
-%%             {\huge\sffamily\color{myRed}}		% format
-%%             {Part \thepart:}				% label
-%%             {0.5em}					% sep
-%%             {}						% before
-%%             {}						% after
+%% titleformat{left}{before}{after}
+%%             <nominal> plus <add up to> minus <subtract up to>
 
-\titleformat*{\section}					% command
-             {\needspace{1in}\Large\sffamily\color{myRed}}		% format
+%% Section
+\titleformat*{\section
+}{\needspace{1in}\Large\sffamily\color{myRed}
+}
+\titlespacing{\section
+}{0pt
+}{8pt plus 2pt minus 2pt
+}{-4pt plus 2pt minus 2pt
+}
 
-\titlespacing{\section}					% command
-             {0pt}					% left
-             {*5}					% before
-             {*.5}					% after
-             
-\titleformat*{\subsection}				% command
-             {\needspace{1in}\large}			% format
+%% SubSection
+\titleformat*{\subsection              % command
+}{\needspace{.1in}\large\color{myGray} % format
+}
+\titlespacing{\subsection
+}{0pt
+}{4pt plus 2pt minus 2pt
+}{-4pt plus 2pt minus 2pt
+}
 
-\titleformat*{\paragraph}				% command
-             {\bfseries}				% format
+%% SubSubSection
+\titleformat*{\subsection              % command
+}{\needspace{.1in}\large\color{myGray} % format
+}
+\titlespacing{\subsubsection
+}{0pt
+}{4pt plus 2pt minus 2pt
+}{-6pt plus 2pt minus 2pt
+}
+
+%% Paragraph
+\titleformat*{\paragraph
+}{\bfseries
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -191,14 +211,12 @@
   \fancyhf{}
   \fancyfoot[L]{\copyrightText}
   \fancyfoot[R]{\revText}
-\end{textblock*}
-
-
 }
 
 \fancypagestyle{theRest}{%
   \fancyhf{}
   \fancyfoot[C]{\thepage of \pageref{LastPage}}
+  \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
 }
 
 
