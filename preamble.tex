@@ -11,19 +11,20 @@
 \usepackage{fancyhdr}		% Header/Footer control
 \usepackage{lastpage}           % Know where the last page is
 \usepackage{acronym}		% We use a lot of these
-%%\usepackage{hyphenat}		% exercise some control over hyphenations
+\usepackage{hyphenat}		% exercise some control over hyphenations
 %%\usepackage[printwatermark]{xwatermark}
-%%\usepackage[parfill]{parskip}	% Full justify and control paragraphs
+\usepackage[parfill]{parskip}	% Full justify and control paragraphs
 %%\usepackage{lipsum}		% Standard lorem ipsum text
 \usepackage{ifthen}		% So we can be Turing Complete
 \usepackage{keyval}		% Optional args
+\usepackage{changepage}		% So we can change margins on the fly
 
 %%% Figures
 \usepackage{graphicx}		% So we can include graphics
 \usepackage{caption}		% Fancy captions
 
 %%% Fancy Tables
-%%\usepackage{booktabs}		% professional-quality tables
+\usepackage{booktabs}		% professional-quality tables
 \usepackage[table]{xcolor}	% Alternate row shading in tables
 %%\usepackage{longtable}		% We want a multi-page table
 %%\usepackage{array}		% Vertical Alignment
@@ -115,6 +116,9 @@
 \newlength\sectionHeaderSpacing
 \setlength\sectionHeaderSpacing{.75em}
 
+\newlength\quoteIndent
+\setlength\quoteIndent{2em}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Format the Title Block                                                    %%
@@ -169,8 +173,8 @@
 }
 \titlespacing{\section
 }{0pt
-}{8pt plus 2pt minus 2pt
-}{-4pt plus 2pt minus 2pt
+}{10pt plus 2pt minus 2pt
+}{4pt plus 2pt minus 2pt
 }
 
 %% SubSection
@@ -179,8 +183,8 @@
 }
 \titlespacing{\subsection
 }{0pt
+}{8pt plus 2pt minus 2pt
 }{4pt plus 2pt minus 2pt
-}{-4pt plus 2pt minus 2pt
 }
 
 %% SubSubSection
@@ -189,8 +193,8 @@
 }
 \titlespacing{\subsubsection
 }{0pt
+}{8pt plus 2pt minus 2pt
 }{4pt plus 2pt minus 2pt
-}{-6pt plus 2pt minus 2pt
 }
 
 %% Paragraph
