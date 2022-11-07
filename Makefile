@@ -30,20 +30,20 @@ BUILD   = BUILD
 %.pdf: %.tex .dummy_builddir
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
-	$(PDFTEX) -output-directory $(BUILD) $<
 	$(BIBTEX) $(BUILD)/$*
+	$(PDFTEX) -output-directory $(BUILD) $<
+	$(PDFTEX) -output-directory $(BUILD) $<
+	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
+	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
+
+%.pdfquick: %.tex .dummy_builddir
+	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
 	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
 
-%.bar:
-	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
-
-
-%.foo:
-	TEXMFOUTPUT="$(BUILD):" bibtex $(BUILD)/$*
-	$(PDFTEX) -output-directory $(BUILD) $<
-
 all: .dummy_builddir paper.pdf
+
+quick: .dummy_builddir paper.pdfquick
 
 PAPER_FIGURES =
 
@@ -59,6 +59,8 @@ PAPER_FILES = \
 VERSION=$(shell git describe 2>/dev/null || git rev-parse --short HEAD)
 $(BUILD)/copyright.tex:
 	echo "$(VERSION)" > $(BUILD)/rev.tex
+
+paper.pdfquick: $(PAPER_FILES)
 
 paper.pdf: $(PAPER_FILES)
 
