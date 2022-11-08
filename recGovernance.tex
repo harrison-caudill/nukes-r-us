@@ -2,24 +2,18 @@
 
 The governance structures presented here are designed to be exemplary
 in nature and to stimulate discussion.  These recommendations provide
-a glimpse of a stable end-point where the incentives of parties
-involved are balanced.  However, the potential paths to reach that
-stable point are poorly understood.
+a glimpse of stable end-points where the incentives of parties
+involved are balanced.  However, the potential paths to reach those
+stable points are beyond the scope of this publication.
 
-Seeking agreement on reasonable governance structures seems, at best,
-enormously difficult.  China is engaged in slave labor and preparing
-to invade Taiwan, Russia has already invaded and committed war-crimes
-in Ukraine after assasinating or imprisoning political rivals, and the
-United States only narrowly avoided a successful coup attempt by one
-of the two major political parties - navigating ASAT governance
-agreements in this complicated diplomatic space is well beyond the
-scope of this paper.  Further complicating matters is the question of
-what ``civilian oversight'' might even mean in the context of an
-autocratic regime such as China, Russia, or potentially even the USA
-if any of the anticipated followup coup attempts were to succeed.  It
-could be argued that an externally-applied deterrent would be more
-effective against such a regime than an internally-accepted governance
-structure.
+Two parallels present themselves for governance structures: nuclear
+weapons and environmental regulations.  Space debris is, quite
+rightly, viewed as a pollutant.  \acp{kasat} are also strategic
+weapons.  Historical precedent and learned lessons from prior
+successes and failures such as the Montreal Protocol, Paris Accords,
+and Global Test Ban Treaty may help inform future discourse and
+actions.
+
 
 \subsection{Prior Attempts at Governance}
 \begin{itemize}
@@ -35,7 +29,8 @@ structure.
 \item In September, 2022, the United States Mission to the UN
   submitted a
   \href{https://uploads.mwp.mprod.getusinfo.com/uploads/sites/25/2022/09/US-ASAT-Documents-1-1.pdf}{proposed
-    resolution} banning the destructive testing of DA-ASAT missiles.
+    resolution} banning the destructive testing of DA-ASAT
+  missiles.\cite{un-asat-me-not}
 
 \end{itemize}
 
@@ -108,27 +103,26 @@ regarding test results in as unambiguous a manner as possible.
 \textbf{Attribution:} Any violations of the agreed limitations should
 be directly attributable to the offending nation.
 
-\textbf{Flexibility:} The restrictions should still permit reasonable
-testing to ensure efficacy.
+\textbf{Efficacy:} The restrictions should still permit reasonable
+testing for \acp{kasat} development.
 
 \textbf{Safety:} Undue risk to civil space exploration should be
 avoided.
 
 \subsubsection{Verification \& Attribution}
-If testing limitations are defined strictly in terms of observable
-quantities available in the public domain, then verification becomes a
-tractable problem.  If the observable metrics cannot be publicly
-disclosed, then enforceability becomes questionable as no public
-statements of infraction can be made.  If the only source of
-information for these metrics is from governments, then political bias
-can also interfere.  Ideally, the metrics should be verifiable by
-private third parties in multiple nations.
+Any defined restriction would likely need to be derivable from
+quantities that are observable not only to governments, but also to
+private industry.  Absent some method of verification, effective
+restrictions would be impossible.  Figure \ref{figure::observables}
+lists several such attributes.
 
 \def\derX{{\bf x}}
 
-\begin{center}
+\begin{figure}
+  \label{figure::observables}
+  \centering
   \begin{tblr}[
-      label = {tblr:test},
+      label = {tbl::gov::test},
     ]{%
       colspec = {Q[c,m]|Q[c,m,wd=1in]|Q[c,m,wd=1in]|Q[c,m,wd=1in]},
       row{odd} = {gray!25}, row{even} = {white},
@@ -151,51 +145,68 @@ private third parties in multiple nations.
     Number of Pieces of Trackable Debris & \derX{} & \derX{} & \derX{} \\
     Number of Pieces of Untrackable Debris & & & \\
   \end{tblr}
-\end{center}
+  \caption{Observable quantities which might be of use in defining
+    testing and use limitations of \aclp{kasat}.}
+\end{figure}
 
-While private industry is well-poised to observe that an ASAT test has
-occurred by observing changes in trackable debris, it is unclear
-whether or not there is sufficient commercial monitoring of
+While private industry is well-poised to observe that a \ac{kasat}
+test has occurred by observing changes in trackable debris, it is
+unclear whether or not there is sufficient commercial monitoring of
 unannounced launches to be capable of attributing a launch to a
-specific nation.
+specific nation (FIXME: Ask Brian about this one).
 
-\subsubsection{Flexibility and Safety}
-Definitions of safety would likely involve concepts such as ``Odds of
-a subsequent collision within 10 years''.  However, determining such
-values can be quite difficult even for cooperative parties.(citation
-needed???)  Since restricting complicated quantities such as that
-would eliminate the verifiability requirement, proxy values will
-likely be required instead.
+\subsubsection{Efficacy and Safety}
+A good definition of acceptable use would likely involve concepts such
+as ``Odds of a subsequent collision within 10 years'' or ``impact
+debris expectancy''.\cite[p19]{italiano} However, determining such
+values can be quite difficult even for cooperative
+parties.\cite[p18]{italiano} While it is conceivable that a
+formulation of these concepts could be developed and agreed-upon, that
+prospect seems unlikely.  Proxy values (such as total number of pieces
+of trackable debris above a certain size) are likely to be required
+instead.
 
-If a numerical model can be agreed upon, and a theorem-proven
-implementation constructed then it could be an excellent method of
-limiting testing.  Alternatively, a more brute-force approach can be
-utilized.  For example, the total number of pieces of trackable debris
-can be restricted.  In both cases, a ``quota'' can be set.  If a
-numerical model for probability of collision is employed then the
-quota can be expressed as a probability.  If the restriction is on the
-number of pieces of trackable debris, then that number can represent
-the national quota.
+However, even such ``simple'' values can still present a hopeless
+amount of complexity.  \ac{radar} systems are not universally
+consistent in their capabilities\cite[needed?]{xxx}, nor are the
+complete capabilities of any given nation necessarily
+known.\cite[needed?]{xxx} Different \acp{radar} systems are effective
+at observing different sizes and distributions of debris and as
+\ac{radar} systems become more and more sophisticated, more debris
+will be cataloged.  If, for example, a quota of 3,000 pieces of
+trackable debris were set one day when a nation has only 1,500 pieces
+in orbit, then the next day a new \ac{radar} system goes online and
+finds a new cohort of 2,000 pieces attributable to their \ac{kasat}
+launch, does that new cohort count against the nation's quota?  Even
+if a numerical model is agreed upon which purports to predict the
+probability of a natural collision, its output would likely still
+change when better knowledge of initial conditions is made available
+and the same issue exists.
 
-The naive model present in the Gabby software package(cite github) has
-been shown to work reasonably well at predicting the overall status of
-debris clouds.  Using this model, several scenarios were run and it
-was found that the overall amount of trackable debris in orbit would
-be quite manageable under responsible testing conditions.  For
-example, as shown in figure 42 in Jonn's removed Appendix, the total
-number of pieces of trackable debris in orbit remains below 2,000 even
-if 3 Mission Shakti style events were to happen at random times each
-year.  Since that number of pieces of trackable debris represents a
-small fraction of the total number, an argument could be made that it
-is ``manageable''.  However, it should be noted that further research
-and consultation with existing experts is required to guard against
-unseen threats, such as untrackable debris.  Current models predict
-the mean time between natural collisions between existing objects in
-orbit to be measured in years.(cite...sh** where was that figure...it
-was super handy...)  Since the equilibrium amount of debris caused by
-this testing regimen would not appreciably change those circumstances,
-it seems reasonable, if naive, to assume that it would not accelerate
-the onset of Kessler Syndrome by much.
+Still, several years of experience has suggested that the amount of
+debris generated from a Mission Shakti style event is generally
+``manageable''.  The naive model present in the
+\href{https://github.com/harrison-caudill/gabby}{Gabby software
+  package} has been shown to work reasonably well at predicting the
+overall status of debris clouds.\cite{gabby} Using this model, several
+scenarios were run and it was found that the overall amount of
+trackable debris in orbit would be quite manageable under responsible
+testing conditions.  For example, as shown in figure
+\ref{figure::gabby::doomsday} in appendix \ref{appendix::gabby}, the
+total number of pieces of trackable debris in orbit remains below
+2,000 even if 3 Mission Shakti style events were to happen at random
+times each year.  Since that number of pieces of trackable debris
+represents a small fraction of the total number, an argument could be
+made that it is ``manageable''.  However, it should be noted that
+further research and consultation with existing experts is required to
+guard against unseen threats, such as untrackable debris.  Current
+models predict the mean time between natural collisions between
+existing objects in orbit to be measured in years.(cite...sh** where
+was that figure...it was super handy...kessler-reunion maybe?)  Since
+the equilibrium amount of debris caused by this testing regimen would
+not appreciably change those circumstances, it seems reasonable, if
+naive, to assume that it would not accelerate the onset of Kessler
+Syndrome by much.
 
 Ultimately, if each nation is on some form of impact quota (be it
 number of pieces of debris, or some other universally accepted
@@ -242,3 +253,25 @@ specific nation.  That leaves damages from tracked pieces of debris to
 spacecraft that are still functioning but unable to maneuver to avoid
 the collision.  This scenario is expected to be an edge case.
 
+
+\subsection{Analogous Governance Systems}
+
+
+The Montreal Protocol is an excellent example of international
+cooperation to reduce a pollutant based upon numerical analysis and
+restrictions.\cite{oh-canada} With continued international support and
+consistent updates, the Monteral Protocol is on track to have reverted
+damage to the Ozone Layer back to pre-industrial levels by
+2060-2075.\cite{oh-canada}  The Paris Accords, on the other hand, have
+so far been far less effective.\cite{lousy-paris}
+
+Nuclear governance is also a clear analog.  The strategic nature of
+the weapons in terrestrial wafare is closely related to that of
+\acp{kasat} in the orbital domain.  Nuclear armaments have not been
+banned, nor are they likely to be banned.  While much progress has
+been made on banning nuclear testing, those tests still happen, and
+there is also less of a necessity as numerical simulations have
+largely supplanted physical tests.  It should be noted, however, that
+numerical simulation proceeded hundreds of physical tests, thereby
+allowing numerical models to be validated by real-world testing.  No
+such long history of \ac{kasat} testing exists.

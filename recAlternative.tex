@@ -20,13 +20,13 @@ Any attack method that, for example, caused the electrical systems of
 an enemy spacecraft to falter would qualify.  Any attack method that
 redirected the target into the atmosphere would also qualify.  A few
 categories of potential weaponry are discussed.  All of the methods
-listed below are possible using current levels of technology in
-commercial industry, and in some cases using currently-deployed
-satellites.
+listed below are possible using current levels of technology and
+components available in commercial industry, and in some cases using
+currently-deployed satellites.
 
 While this discussion does most certainly revolve around the
 weaponization of space, it is worth noting that nothing proposed here
-appears to violate the Outer Space Treaty. (outer-space)
+appears to violate the Outer Space Treaty.\cite{outer-space}
 
 \subsection{Blockade}
 In response to Russia's invasion of Ukraine in 2022, the world levied
@@ -63,6 +63,9 @@ a small number of low-cost and refuelable assets could continually
 harass the target, preventing smooth mission operations, and
 potentially forcing it to expend all of its valuable propellant.
 
+A spacecraft that is unable to execute its mission is just as useless
+to an adversary as is one which has been destroyed with a \ac{kasat}.
+
 \subsection{Physical Disablement}
 Most terrestrial weaponry capable of physical disablement is kinetic
 in nature.  That propensity seems to have carried forward to
@@ -70,32 +73,97 @@ counterspace weaponry: hit the satellite with a fast-moving chunk of
 missile and the satellite explodes.  Physical disablement without
 generating debris involves a great deal more finesse and control, and
 usually the ability to operate in close proximity to the target, known
-as Rendezvous and Proximity Operations (RPO).
+as \acf{rpo}.  Several physical characteristics of operations in orbit
+could be leveraged for the production of these weapons.
 
-\subsection{Cyber/Jamming Attacks}
-Probably going to rewrite this section.
+\begin{itemize}
+
+\item Spacecraft rely upon batteries as available solar power does not
+  always exceed usage.  If a spacecraft's batteries were to become too
+  hot and fail, then the spacecraft's utility would plummet.
+
+\item Thermal radiators are used to prevent overheating which may
+  damage (among other things) the batteries, or may impede sensor
+  efficiency (e.g. \acf{hsi}).  By depositing a material on the
+  thermal radiators with a low emmissivity coefficient (such as gold)
+  then their efficiency can be greatly impeded and reduce the
+  available thermal budget for operation.  That means 
+
+\item A similar material (such as gold) could be deposited on the body
+  of spacecraft itself.  By changing the Absorbtivity / Emissivity
+  ratio, the amount of heat absorbed from the sun would be increased
+  and raise the equilibrium temperature of the spacecraft, decreasing
+  available thermal budget for operation of things like \ac{rf} power
+  amplifiers for communications.
+
+\item Exposed pins could be shorted.  For example, if \ac{cbus} pins
+  were shorted together, then the effective resistance across the bus
+  would drop to roughly $0\Omega$, well below the nominal $60\Omega$
+  and the bus would likely cease to function.
+
+\item Deposition of metal ions on antennas could disrupt antenna
+  radiation patterns, potentially destroying \ac{rf} power amplifiers
+  with reflected power and greatly reducing available \ac{rf} link
+  margin thereby reducing available throughput of data.  If an
+  \ac{isr} spacecraft is incapable of transmitting the received
+  data, then it is incapable of fulfilling its mission.
+
+\item Sensors could be occluded with deposited material, reducing or
+  even destroying their efficacy.  If gold were deposited on a camera
+  lens up to a depth of $\frac{\lambda}{2}$ then little or no light
+  would reach the sensor.  Alternatively, a lesser amount could be
+  deposited to only attenuate efficiency.
+  
+\item The same deposition technique could also occlude solar panels
+  decreasing available electrical power budget for system operations.
+  Terrestrial solar panels are frequently designed to be resilient
+  against small occlusions (e.g. bird guano); it is doubtful that any
+  spacecraft's solar panels are designed with a similar type of
+  resilience.  There is potential for a small and focused occlusion on
+  a target's solar panels to have an extremely outsized effect.
+
+\item Grappling a target and forcibly de-orbiting it would, clearly,
+  end its mission.  To ensure the target lacks available fuel for
+  maneuvering, it could first be harassed with inexpensive satellites,
+  forcing it to expend all of its propellant in evasive maneuvers
+  before utilizing the high-cost grappling and de-orbit system.
+
+\end{itemize}
+
+As can be clearly seen, the ability to deposit a metal ion such as
+gold on a spacecraft would provide a number of potential \acp{safe}.
+\acp{kasat} are not necessary.
+
+
+\subsection{Cyber Attacks}
 
 Cyber attacks and jamming/spoofing are already a mainstay of military
 action - as they should be.  In 2022, civilian space infrastructure
-was attacked by Russia as part of their invasion of Ukraine.  As was
-outlined in the 2019 publication Big Risks in Small Satellites, a
-nation at war has a significant incentive to conduct cyber attacks
-against both civilian and military space infrastructure.  Also, those
-same civilian organizations lack the necessary economic incentives to
-secure their spacecraft as those cyber attacks are only expected once
-it is too late - i.e. once a state of war exists.  Since a specific
-cyber attack vector can usually be mitigated once known, there is a
-strong incentive to avoid utilizing that attack until it can be
-maximally effective.  The single-use nature of cyber attacks could
-potentially make them less attractive than some of their physical
-counterparts.
+was attacked by Russia as part of their invasion of Ukraine.  A nation
+at war has a significant incentive to conduct cyber attacks against
+both civilian and military space infrastructure.\cite{big-risks} Also,
+those same civilian organizations lack the necessary economic
+incentives to secure their spacecraft as those cyber attacks are only
+expected once it is too late - i.e. once a state of war exists.  Since
+a specific cyber attack vector can usually be mitigated once known,
+there is a strong incentive to avoid utilizing that attack until it
+can be maximally effective.  The single-use nature of zero-day cyber
+attacks could potentially make them less attractive than some of their
+physical counterparts.  However, at the same time, the potential reach
+and devastation of a ``Cyber Pearl Harbor'' style attack is also
+worthy of consideration.
 
 As was illustrated with the Russian hack of Viasat terminals, cyber
 attacks are a real and effective means of disabling strategic
-space-based capabilities without generating orbital debris.  Also as
-discussed in Big Risks in Small Satellites, spacecraft could be
-hijacked via cyber attack.  It is possible, for example, to hijack
-commercial spacecraft with the existing ability to represent a
-national security risk.  The subsequent publication Commercial Space
-System Security Guidelines begins the discussion of appropriate cyber
-defenses for commercial spacecraft.
+space-based capabilities without generating orbital debris.
+Furthermore, many existing commercial spacecraft 
+
+A much more thorough treatment of this topic can be found in
+\href{https://www.researchgate.net/publication/341435541_Big_Risks_in_Small_Satellites_-_The_Need_for_Secure_Infrastructure_as_a_Service}{Big
+  Risks in Small Satellites} which not only outlines the core issues
+of economics but also outlines a market-friendly solution to that
+problem.
+
+Since many of the techniques described herein are already available to
+deployed commercial assets, cyber attacks pose a very real risk to
+national security, and a very real alternative to \acp{kasat}.

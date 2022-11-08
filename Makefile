@@ -9,11 +9,18 @@ BIBTEX  = docker run -ti \
 	-e TEXMFOUTPUT="$(BUILD):" \
 	pdflatex \
 	bibtex
-BIBTEX  = bibtex
 PSPDF   = ps2pdf
 DIA     = dia
 CONVERT = convert
 BUILD   = BUILD
+
+%.toc: %.tex
+	$(PDFTEX) -output-directory $(BUILD) $<
+	touch $(BUILD)/$*.toc
+
+%.bbl:
+	$(BIBTEX) $(BUILD)/$*
+	touch $(BUILD)/$*.bbl
 
 %.eps: %.dia
 	$(DIA) --export=$*.eps $<
@@ -30,16 +37,13 @@ BUILD   = BUILD
 %.pdf: %.tex .dummy_builddir
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
-	$(BIBTEX) $(BUILD)/$*
-	$(PDFTEX) -output-directory $(BUILD) $<
-	$(PDFTEX) -output-directory $(BUILD) $<
 	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
 	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
 
 %.pdfquick: %.tex .dummy_builddir
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
-	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
+	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
 
 all: .dummy_builddir paper.pdf
 
@@ -53,14 +57,16 @@ PAPER_FILES = \
 	preamble.tex \
 	commands.tex \
 	exec_summary.tex \
-	$(BUILD)/copyright.tex \
-	sources.bib
+	$(BUILD)/rev.tex \
+	paper.toc \
+	paper.bbl \
+	Rec.bbl
 
 VERSION=$(shell git describe 2>/dev/null || git rev-parse --short HEAD)
-$(BUILD)/copyright.tex:
+$(BUILD)/rev.tex:
 	echo "$(VERSION)" > $(BUILD)/rev.tex
 
-paper.pdfquick: $(PAPER_FILES)
+paper.pdfquick:
 
 paper.pdf: $(PAPER_FILES)
 

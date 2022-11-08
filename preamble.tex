@@ -46,7 +46,7 @@
 
 %%% URLs & References
 \usepackage{url}		% simple URL typesetting
-\usepackage{multibib}		% So we can have a recommended-reading bib
+\usepackage[resetlabels,labeled]{multibib}% So we can have a recommended-reading bib
 \usepackage{fancyref}		% Internal references with Figure/Section/...
 
 % hyperlinks -- MUST BE THE LAST IMPORT
@@ -154,7 +154,9 @@
     {\large\sffamily\@titlenote}\par
     {\LARGE\bfseries\sffamily\color{myRed}\@title}\par
     {\large\sffamily\@subtitle}\par
-    {\normalsize\@author\ \ --\ \ \@date}
+    \ifthenelse{\equal{\@author}{} \AND \equal{\@date}{}}{}{%
+      {\normalsize\@author\ \ --\ \ \@date}
+    }
   \end{center}
   \vspace{0.15in}
 }
@@ -220,7 +222,7 @@
 
 \fancypagestyle{theRest}{%
   \fancyhf{}
-  \fancyfoot[C]{\thepage of \pageref{LastPage}}
+  \fancyfoot[C]{\thepage{} of \pageref{LastPage}}
   \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
 }
 
@@ -229,5 +231,26 @@
 %% Bibliography Stuff                                                        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%\newcites{ref}{References}
-%%\newcites{rec}{Recommended Reading}
+\newcites{Rec}{Recommended Reading}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitions                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Anti Satellite Weapons}
+\subtitle{A Critical Examination with Recommendations}
+\author{Harrison Caudill (harrison@hypersphere.org)}
+\date{December 1, 2022}
+
+%% Set up link coloring
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    citecolor=blue,
+    urlcolor=cyan,
+    pdftitle={\title{}, \subtitle{}},
+    pdfpagemode=FullScreen,
+}
+
