@@ -37,7 +37,7 @@ BUILD   = BUILD
 %.pdf: %.tex .dummy_builddir
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
-	yes | rm -f $(BUILD)/*.tex # remove any generated tex files when done
+	$(PDFTEX) -output-directory $(BUILD) $<
 	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
 
 %.pdfquick: %.tex .dummy_builddir
@@ -49,14 +49,7 @@ all: .dummy_builddir paper.pdf
 
 quick: .dummy_builddir paper.pdfquick
 
-PAPER_FIGURES =
-
 PAPER_FILES = \
-	$(PAPER_FIGURES) \
-	paper.tex \
-	preamble.tex \
-	commands.tex \
-	exec_summary.tex \
 	$(BUILD)/rev.tex \
 	paper.toc \
 	paper.bbl \
@@ -66,7 +59,7 @@ VERSION=$(shell git describe 2>/dev/null || git rev-parse --short HEAD)
 $(BUILD)/rev.tex:
 	echo "$(VERSION)" > $(BUILD)/rev.tex
 
-paper.pdfquick:
+paper.pdfquick: $(BUILD)/rev.tex
 
 paper.pdf: $(PAPER_FILES)
 

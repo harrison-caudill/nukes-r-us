@@ -22,11 +22,15 @@ boiling temperature.
 This model is naive, has not received engineering review, and may well
 contain errors.  The point of comparison employed by a more complete
 study of the topic done by the Union of Concerned Scientists discussed
-a decoy at 77K, as opposed to the 95K discussed here.
+a decoy at 77K, as opposed to the 95K discussed here.  Assumptions can
+be found in figure \ref{figure::thermal::assumptions} and the resulting
+budget in figure \ref{figure::thermal::budget}
 
-\begin{center}
+\begin{figure}[!ht]
+  \label{figure::thermal::assumptions}
+  \centering
+
   \begin{tblr}[
-      label = {tbl::thermal::assumptions},
     ]{%
       colspec = {Q[c,m]|Q[c,m]|Q[c,m]},
       row{odd} = {gray!25}, row{even} = {white},
@@ -49,11 +53,14 @@ a decoy at 77K, as opposed to the 95K discussed here.
     KKV Range & 500 & $km$ \\
 
   \end{tblr}
-\end{center}
 
-\begin{center}
+  \caption{Initial assumptions in thermal imaging SNR model.}
+\end{figure}
+
+\begin{figure}
+  \label{figure::thermal::budget}
+  \centering
   \begin{tblr}[
-      label = {tbl::thermal::budget},
     ]{%
       colspec = {Q[c,m]|Q[c,m]|Q[c,m]},
       row{odd} = {gray!25}, row{even} = {white},
@@ -75,7 +82,9 @@ a decoy at 77K, as opposed to the 95K discussed here.
     SNR & 1.53:1 & \\
 
   \end{tblr}
-\end{center}
+
+  \caption{Resulting SNR budget.}
+\end{figure}
 
 \subsection*{Consequential Factors}
 \begin{itemize}
