@@ -31,37 +31,41 @@ appears to violate the Outer Space Treaty.\cite{outer-space}
 \subsection{Blockade}
 In response to Russia's invasion of Ukraine in 2022, the world levied
 a vast array of economic sanctions against Russia and her
-oligarchs.(find some nytimes article or something summarizing
-sanctions) Economic sanctions, blockades, etc are tools of statecraft
-that are far more nuanced than Tomahawk missiles (precision-guided
-though they may be).  In a similar manner, it seems worthy to carry
-the concept of a blockade over to the space arena.  A blockade need
-not generate any debris; in fact, it need not cause any damage at all.
+oligarchs.\cite[nytimes article or something summarizing
+  sanctions]{xxx} Economic sanctions, blockades, etc are tools of
+statecraft that are far more nuanced than Tomahawk missiles
+(precision-guided though they may be).  In a similar manner, it seems
+worthy to carry the concept of a blockade over to the space arena.  A
+blockade need not generate any debris; in fact, it need not cause any
+damage at all.
 
 Any spacecraft (commercial or military) which is independently capable
 of close approach for an operation such as servicing or refueling
-could, in principle, use those capabilities for rendezvous and
-proximity operations (RPO) with an adversary.  Several spacecraft
-could fly formation with a target, thereby limiting its
-maneuverability and interfering with its mission.  If a bloackading
-spacecraft is occluding a camera, then its Intelligence Surveillance
-and Recoinnasance (ISR) mission cannot continue and a maneuver would
-be required to get a clear view of the target area.  If accelerating
-in any direction would result in a collision, however, then the target
-spacecraft would have few options but to endure the blockade.  In
-addition, the interceptors could interfere with the target's ability
-to use its sensor payloads, or even shade its solar panels preventing
-them from charging batteries or cover their thermal radiators making
-it more difficult for them to cool themselves down.
+could, in principle, use those capabilities for \ac{rpo} with an
+adversary.  Several spacecraft could fly formation with a target,
+thereby limiting its maneuverability and interfering with its mission.
+If a bloackading spacecraft is occluding a camera, then its \ac{isr}
+mission cannot continue and a maneuver would be required to get a
+clear view of the target area.  If accelerating in any direction would
+result in a collision, however, then the target spacecraft would have
+few options but to endure the blockade.  In addition, the interceptors
+could shade the target's solar panels preventing them from charging
+batteries or cover their thermal radiators making it more difficult
+for them to cool themselves down.
+
+In this manner, a strategic asset of an adversary could be effectively
+blockaded.  Even if the target were to take evasive action in an
+attempt to prevent a successful blockade, a small number of low-cost
+and refuelable assets could continually harass the target, preventing
+smooth mission operations, and potentially forcing it to expend all of
+its valuable propellant.
 
 While this approach is not expected to be useful against scores of
 smallsats in a resilient constellation, it is likely to be effective
-against large strategic assets. In this manner, a strategic asset of
-an adversary could be effectively blockaded.  Even if the target were
-to take evasive action in an attempt to prevent a successful blockade,
-a small number of low-cost and refuelable assets could continually
-harass the target, preventing smooth mission operations, and
-potentially forcing it to expend all of its valuable propellant.
+against large strategic assets. Since some laws of physics, such as
+the lens radius necessary for \acf{hsi} will likely mandate large
+strategic assets for some time, this approach is expected to remain
+effective.
 
 A spacecraft that is unable to execute its mission is just as useless
 to an adversary as is one which has been destroyed with a \ac{kasat}.
@@ -72,34 +76,36 @@ in nature.  That propensity seems to have carried forward to
 counterspace weaponry: hit the satellite with a fast-moving chunk of
 missile and the satellite explodes.  Physical disablement without
 generating debris involves a great deal more finesse and control, and
-usually the ability to operate in close proximity to the target, known
-as \acf{rpo}.  Several physical characteristics of operations in orbit
-could be leveraged for the production of these weapons.
+usually the ability to operate in \ac{rpo}.  Several physical
+characteristics of operations in orbit could be leveraged for the
+production of these weapons.
 
 \begin{itemize}
 
-\item Spacecraft rely upon batteries as available solar power does not
-  always exceed usage.  If a spacecraft's batteries were to become too
-  hot and fail, then the spacecraft's utility would plummet.
-
 \item Thermal radiators are used to prevent overheating which may
   damage (among other things) the batteries, or may impede sensor
-  efficiency (e.g. \acf{hsi}).  By depositing a material on the
-  thermal radiators with a low emmissivity coefficient (such as gold)
-  then their efficiency can be greatly impeded and reduce the
-  available thermal budget for operation.  That means 
+  efficiency (e.g. \acf{hsi}).  Depositing a material with a low
+  emmissivity coefficient (such as gold) on the thermal radiators
+  could significantly impare their efficiency and reduce the available
+  thermal budget for operating systems.\footnote{Contrary to popular
+  imagination, spacecraft frequently tend to be hot rather than cold.
+  Without an atmosphere to accept excess heat, they're forced to shine
+  out infrared energy into deep space.  Thermal regulation of
+  spacecraft is a complicated topic.  For context, the AIAA's
+  publication, Spcecraft Thermal Control Handbook Vol 1
+  \cite{thermals} is over 800 pages long.}
 
-\item A similar material (such as gold) could be deposited on the body
-  of spacecraft itself.  By changing the Absorbtivity / Emissivity
-  ratio, the amount of heat absorbed from the sun would be increased
-  and raise the equilibrium temperature of the spacecraft, decreasing
-  available thermal budget for operation of things like \ac{rf} power
-  amplifiers for communications.
+\item A similar material could be deposited on the body of spacecraft
+  itself.  By changing the Absorbtivity / Emissivity ratio, the amount
+  of heat absorbed and retainedfrom the sun would be increased and raise the
+  equilibrium temperature of the spacecraft, decreasing available
+  thermal budget for operation of things like \ac{rf} power amplifiers
+  for communications.
 
 \item Exposed pins could be shorted.  For example, if \ac{cbus} pins
   were shorted together, then the effective resistance across the bus
-  would drop to roughly $0\Omega$, well below the nominal $60\Omega$
-  and the bus would likely cease to function.
+  would drop to well below the nominal $60\Omega$ and the bus would
+  likely cease to function.
 
 \item Deposition of metal ions on antennas could disrupt antenna
   radiation patterns, potentially destroying \ac{rf} power amplifiers
@@ -155,10 +161,8 @@ worthy of consideration.
 
 As was illustrated with the Russian hack of Viasat terminals, cyber
 attacks are a real and effective means of disabling strategic
-space-based capabilities without generating orbital debris.
-Furthermore, many existing commercial spacecraft 
-
-A much more thorough treatment of this topic can be found in
+space-based capabilities without generating orbital debris.  A much
+more thorough treatment of this topic can be found in
 \href{https://www.researchgate.net/publication/341435541_Big_Risks_in_Small_Satellites_-_The_Need_for_Secure_Infrastructure_as_a_Service}{Big
   Risks in Small Satellites} which not only outlines the core issues
 of economics but also outlines a market-friendly solution to that
