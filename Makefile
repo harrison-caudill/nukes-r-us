@@ -47,6 +47,10 @@ BUILD   = BUILD
 
 all: .dummy_builddir paper.pdf
 
+bib:
+	yes | rm -f $(BUILD)/paper.bbl
+	make paper.bbl
+
 quick: .dummy_builddir paper.pdfquick
 
 PAPER_FILES = \
