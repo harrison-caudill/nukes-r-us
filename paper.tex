@@ -5,12 +5,20 @@
 
 \input{acro}
 
+%% Use roman numerals for the executive summary
+\pagenumbering{roman}
+
 \input{exec_summary}
+
+\label{lastPageOfExecSummary}
 
 \newpage
 
 %% Reset acronyms for the paper
 \acresetall
+
+%% Switch to arabic numbers for the paper itself
+\pagenumbering{arabic}
 
 \input{intro}
 \input{asatOverview}

@@ -1,8 +1,5 @@
 \documentclass[10pt]{article}
 
-%% \loadspellchecklist[en][wordlist.txt]
-%% \setupspellchecking[state=start]
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages                                                                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,6 +225,12 @@
 \fancypagestyle{theRest}{%
   \fancyhf{}
   \fancyfoot[C]{\thepage{} of \pageref{LastPage}}
+  \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
+}
+
+\fancypagestyle{execSummary}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage{} of \pageref*{lastPageOfExecSummary}}
   \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
 }
 
