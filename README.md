@@ -8,6 +8,8 @@ Space Security
 
  * Citations pass
 
+ * Death-Of-Fun
+
  * Spell checking
 
  * Clean up the thermal imaging appendix section
