@@ -73,11 +73,10 @@ to an adversary as is one which has been destroyed with a \ac{kasat}.
 Most terrestrial weaponry capable of physical disablement is kinetic
 in nature.  That propensity seems to have carried forward to
 counterspace weaponry: hit the satellite with a fast-moving chunk of
-missile and the satellite explodes.  Physical disablement without
-generating debris involves a great deal more finesse and control, and
-usually the ability to operate in \ac{rpo}.  Several physical
-characteristics of operations in orbit could be leveraged for the
-production of these weapons.
+missile and the satellite explodes.  Several physical characteristics
+of operations in orbit could be leveraged for \ac{safe} missions,
+though physical disablement without generating debris involves a great
+deal more finesse and control.
 
 \begin{itemize}
 
@@ -96,10 +95,10 @@ production of these weapons.
 
 \item A similar material could be deposited on the body of spacecraft
   itself.  By changing the Absorbtivity / Emissivity ratio, the amount
-  of heat absorbed and retainedfrom the sun would be increased and raise the
-  equilibrium temperature of the spacecraft, decreasing available
-  thermal budget for operation of things like \ac{rf} power amplifiers
-  for communications.
+  of heat absorbed and retained from the sun would be increased and
+  raise the equilibrium temperature of the spacecraft, decreasing
+  available thermal budget for operation of things like \ac{rf} power
+  amplifiers for communications.
 
 \item Exposed pins could be shorted.  For example, if \ac{cbus} pins
   were shorted together, then the effective resistance across the bus
@@ -107,11 +106,10 @@ production of these weapons.
   likely cease to function.
 
 \item Deposition of metal ions on antennas could disrupt antenna
-  radiation patterns, potentially destroying \ac{rf} power amplifiers
-  with reflected power and greatly reducing available \ac{rf} link
-  margin thereby reducing available throughput of data.  If an
-  \ac{isr} spacecraft is incapable of transmitting the received
-  data, then it is incapable of fulfilling its mission.
+  radiation patterns greatly reducing available \ac{rf} link margin or
+  even potentially destroying \ac{rf} power amplifiers with reflected
+  power.  If an \ac{isr} spacecraft is incapable of transmitting the
+  received data, then it is incapable of fulfilling its mission.
 
 \item Sensors could be occluded with deposited material, reducing or
   even destroying their efficacy.  If gold were deposited on a camera
@@ -174,39 +172,36 @@ national security, and a very real alternative to \acp{kasat}.
 
 \subsection{Ancillary Benefits}
 
-One of the advantages of a \ac{safe} weapons constellation is the
-inherent utility outside of \ac{safe} capabilities.  Most \acp{safe}
-require \ac{rpo} capabilities, suggesting that any deployed
-constellation would likely be in an excellent position to perform
-\ac{isr} missions.  To conduct sat-sat cyber attacks, the interceptor
-would need to be capable of operating on the same frequencies and
-protocols as the target.  That requirement would likely result in a
-wide-band \ac{rf} front-end (permitting a wide-range of frequencies)
-and a \acf{sdr} (permitting a wide-range of protocols).  That same
-capability would permit the interceptor to monitor things like data
-transmissions to/from the target.  Additionally, optical systems
-could be utilized to monitor the target's attitude potentially
-shedding light on any \ac{aoi} of the target.
+One of the advantages of a \ac{safe} weapons constellation is its
+inherently dual-purpose nature.  The \ac{safe} approaches described
+above require a set of spacecraft capabilities that could be leveraged
+for civilian (or at least peaceful) missions.  For example, the
+capabilities necessary to execute sat-to-sat cyber attacks would be
+sufficient to operate as a sat-to-sat communications relay.
 
-If a spacecraft can reliably get close to a target, and has radio
-systems that are flexible enough to communicate with it, then it can
-also act as a radio relay service.  Interceptors could maneuver to
-either have a single close approach to transfer large amounts of data
-in a short period (e.g. for a \acl{hsi} mission where the raw data is
-unlikely to be needed on a timely basis), or the interceptor could
-``buddy-up'' and fly formation with the target providing a
-longer-lived radio relay.  With this approach, dual-use weapons
-constellations could potentially eliminate the need for \ac{fcc}
-and/or \ac{itu} licensing, for example, by allowing spacecraft to
-utilize only low-power short-range \ac{ismb} WiFi
-modules.\footnote{It is worth noting that the requirement for this
-type of licensing is arguably outmoded and unnecessary anyway as a
-carrier model was shown in 2018 by BStar Communications to be
-advantageous to domestic and international regulators, with vast
-economic benefits to customers and operators.\cite{big-risks}} A
-complete discussion of the required \acp{oms}, refueling systems,
-economic models, etc is beyond the scope of this
-paper.\footnote{Contact the author for further details.}
+One of the largest financial, technological, operational, and
+regulatory risks to a constellation of smallsats is the communications
+system.  If an organization is incapable of communicating with their
+spacecraft, then they have effectively funded a very expensive brick.
+Licensing and spectrum coordination takes time, money, and introduces
+business and operational risk whereas operating in \ac{ism} bands
+(e.g. 2.4GHz or 5GHz on WiFi) does not.  A constellation of these
+interceptors could, effectively, act as radio relays for commercial
+satellites allowing them to launch without high-speed long-range radio
+systems but still have reliable communications.
+
+To act as a radio relay, an interceptor would need to be capable of
+getting close to a customer, it would need the flexibility in the
+\ac{rf} systems to ensure it can utilize the same frequency bands and
+protocols used by the customer, and it would need to be capable of
+high-speed communications with ground systems.  All of those
+capabilities are required of any interceptor capable of sat-to-sat
+cyber attacks and \ac{isr}.  The interceptor could fly formation with
+the customer and relay communications to/from.  The interceptor could
+also make occasional passes near the customer and use the
+limited-duration window to store-and-forward a large amount of data.
+\ac{hsi} missions, for example, are likely to collect large amounts of
+data that is not time sensitive.
 
 Constellations of inexpensive \ac{safe} interceptors could potentially
 provide economic and military benefits that extend beyond their core
