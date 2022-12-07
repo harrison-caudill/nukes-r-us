@@ -1,0 +1,38 @@
+
+
+###############################################################################
+# MIT LL Space Control Conference 2023                                        #
+###############################################################################
+
+ === First Submission, 12/7/2022 ===
+
+ * What is the key result or key message of your talk?
+
+ * What is the evidence of this result?
+
+ * How is it different from previous results? Additionally, please
+   provide keywords for categorizing your talk.
+
+The discussions around governance of Antisatellite missiles is
+primarily focused on banning testing, more specifically, banning
+testing of the Direct Ascent (DA-ASAT) variety.  There are three
+problems with that approach: 1) kinetic-attack debris-generating
+counterspace weapons (Kinetic-ASATs) are not limited to ASAT missiles
+making a ban on DA-ASAT testing a half-measure at best 2) even that
+half-measure is unpallatable to Russia/China and 3) banning ASAT
+missile testing does little to guard against use.  It is too late to
+ban Kinetic-ASATs, but there is still time to fully relegate them to
+strategic deterrents.  The entire concept and approach of Kinetic
+attack must be relegated to strategic deterrence, not just the present
+implementation.  1) The approach is effective providing incentive to
+use them 2) There are few alternatives of similar efficacy and 3)
+There is little governance of the approach.  Practical steps can be
+taken to mitigate points 2 and 3 such as encouraging all parties
+(including adversaries) to develop non-kinetic attacks of equal
+efficacy, CNC safeguards on Kinetic-ASATs, global response policies,
+international debris quotas, etc.  Attempts to ban Kinetic-ASATs are
+doomed to failure, making them wasted effort and opportunity.
+Harm-reducing mitigations, however, may yet succeed.  Kinetic-ASATs
+cannot cause harm if they are not used, so let's make sure they stay
+on the shelf, right next to the nuclear weapons.
+
