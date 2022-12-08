@@ -6,8 +6,6 @@ Space Security
 
 ## Remaining passes
 
- * Citations pass
-
  * Death-Of-Fun
 
- * Spell checking
+ * Final hammering
