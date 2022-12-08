@@ -38,6 +38,7 @@ BUILD   = BUILD
 	yes | rm -f $(BUILD)/*.pdf
 	$(PDFTEX) -output-directory $(BUILD) $<
 	$(PDFTEX) -output-directory $(BUILD) $<
+	$(PDFTEX) -output-directory $(BUILD) $<
 	mv $(BUILD)/$*.pdf $(BUILD)/$*-$(VERSION).pdf
 
 %.pdfquick: %.tex .dummy_builddir
