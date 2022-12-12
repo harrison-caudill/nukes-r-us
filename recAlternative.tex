@@ -1,0 +1,210 @@
+\section{Recommendation: Alternative Weapons}
+
+To ensure that humanity can continue to kill one another, without
+ending civilization, or denying access to space for generations,
+``conventional'' arms are required.  Terrestrially, that means rifles
+and expendable riflemen, that means tanks and TOW missiles.  In space,
+that means \acp{asat} that do not generate debris; that means
+SAFEKILLs.
+
+The primary attribute being sought is the ability to disable or
+otherwise deter, either temporarily or permanently, an enemy
+spacecraft without generating debris.  One critical aspect of
+temporary disablement/deterrence is the ability to do so for an
+arbitrary length of time.  Ground-based jamming, for example, does not
+qualify as it cannot be maintained when the satellite passes out of
+view.  Space-based jamming from a nearby satellite, on the other hand,
+does qualify as the attacker can shadow the target indefinitely.
+
+Any attack method that, for example, caused the electrical systems of
+an enemy spacecraft to falter would qualify.  Any attack method that
+redirected the target into the atmosphere would also qualify.  A few
+categories of potential weaponry are discussed.  All of the methods
+listed below are possible using current levels of technology and
+components available in commercial industry, and in some cases using
+currently-deployed satellites.
+
+While this discussion does most certainly revolve around the
+weaponization of space, it is worth noting that nothing proposed here
+appears to violate the Outer Space Treaty.\cite{outer-space}
+
+\subsection{Blockade}
+In response to Russia's invasion of Ukraine in 2022, the world levied
+a vast array of economic sanctions against Russia and her
+oligarchs.\cite{russian-economy} Economic sanctions, blockades, etc
+are tools of statecraft that are far more nuanced than Tomahawk
+missiles (precision-guided though they may be).  In a similar manner,
+it seems worthy to carry the concept of a blockade over to the space
+arena.  A blockade need not generate any debris; in fact, it need not
+cause any damage at all.
+
+Any spacecraft (commercial or military) which is independently capable
+of close approach for an operation such as servicing or refueling
+could, in principle, use those capabilities for \ac{rpo} with an
+adversary.  Several spacecraft could fly formation with a target,
+thereby limiting its maneuverability and interfering with its mission.
+If a blockading spacecraft is occluding a camera, then its \ac{isr}
+mission cannot continue and a maneuver would be required to get a
+clear view of the target area.  If accelerating in any direction would
+result in a collision, however, then the target spacecraft would have
+few options but to endure the blockade.  In addition, the interceptors
+could shade the target's solar panels preventing them from charging
+batteries or cover their thermal radiators making it more difficult
+for them to cool themselves down.
+
+In this manner, a strategic asset of an adversary could be effectively
+blockaded.  Even if the target were to take evasive action in an
+attempt to prevent a successful blockade, a small number of low-cost
+and refuelable assets could continually harass the target, preventing
+smooth mission operations, and potentially forcing it to expend all of
+its valuable propellant.
+
+While this approach is not expected to be useful against scores of
+smallsats in a resilient constellation, it is likely to be effective
+against large strategic assets. Since some laws of physics, such as
+the lens radius necessary for \acf{hsi} will likely mandate large
+strategic assets for some time, this approach is expected to remain
+effective.
+
+A spacecraft that is unable to execute its mission is just as useless
+to an adversary as is one which has been destroyed with a \ac{kasat}.
+
+\subsection{Physical Disablement}
+Most terrestrial weapons capable of physical disablement are kinetic
+in nature.  That propensity seems to have carried forward to
+counterspace weaponry: hit the satellite with a fast-moving chunk of
+missile and the satellite explodes.  Several physical characteristics
+of operations in orbit could be leveraged for \ac{safe} missions,
+though physical disablement without generating debris involves a great
+deal more finesse and control.
+
+\begin{itemize}
+
+\item Thermal radiators are used to prevent overheating which may
+  damage (among other things) the batteries, or may impede sensor
+  efficiency (e.g. \acf{hsi}).  Depositing a material with a low
+  emissivity coefficient (such as gold) on the thermal radiators could
+  significantly impair their efficiency and reduce the available
+  thermal budget for operating systems.\footnote{Contrary to popular
+  imagination, spacecraft frequently tend to be hot rather than cold.
+  Without an atmosphere to accept excess heat, they're forced to shine
+  out infrared energy into deep space.  Thermal regulation of
+  spacecraft is a complicated topic.  For context, the AIAA's
+  publication, Spacecraft Thermal Control Handbook Vol 1
+  \cite{thermals} is over 800 pages long.}
+
+\item A similar material could be deposited on the body of the
+  spacecraft itself.  By changing the Absorptivity / Emissivity ratio,
+  the amount of heat absorbed and retained from the sun would be
+  increased and raise the equilibrium temperature of the spacecraft,
+  decreasing available thermal budget for operation of things like
+  \ac{rf} power amplifiers for communications.
+
+\item Exposed pins could be shorted.  For example, if \ac{cbus} pins
+  were shorted together, then the effective resistance across the bus
+  would drop to well below the nominal $60\Omega$ and the bus would
+  likely cease to function.
+
+\item Deposition of metal ions on antennas could disrupt antenna
+  radiation patterns greatly reducing available \ac{rf} link margin or
+  even potentially destroying \ac{rf} power amplifiers with reflected
+  power.  If an \ac{isr} spacecraft is incapable of transmitting the
+  received data, then it is incapable of fulfilling its mission.
+
+\item Sensors could be occluded with deposited material, reducing or
+  even destroying their efficacy.  If gold were deposited on a camera
+  lens up to a depth of $\frac{\lambda}{2}$ then little or no light
+  would reach the sensor.  Alternatively, a lesser amount could be
+  deposited to only attenuate efficiency.
+  
+\item The same deposition technique could also occlude solar panels
+  decreasing available electrical power budget for system operations.
+  Terrestrial solar panels are frequently designed to be resilient
+  against small occlusions (e.g. bird guano); it is doubtful that any
+  spacecraft's solar panels are designed with a similar type of
+  resilience.  There is potential for a small and focused occlusion on
+  a target's solar panels to have an extremely outsized effect.
+
+\item Grappling a target and forcibly de-orbiting it would, clearly,
+  end its mission.  To ensure the target lacks available fuel for
+  maneuvering, it could first be harassed with inexpensive satellites,
+  forcing it to expend all of its propellant in evasive maneuvers
+  before utilizing the high-cost grappling and de-orbit system.
+
+\end{itemize}
+
+As can be clearly seen, the ability to deposit a metal ion such as
+gold on a spacecraft would provide a number of potential \acp{safe}.
+\acp{kasat} are not necessary.
+
+
+\subsection{Cyber Attacks}
+
+Cyber attacks and jamming/spoofing are already a mainstay of military
+action - as they should be.  In 2022, civilian space infrastructure
+was attacked by Russia as part of their invasion of Ukraine.  A nation
+at war has a significant incentive to conduct cyber attacks against
+both civilian and military space infrastructure.\cite{big-risks} Also,
+those same civilian organizations lack the necessary economic
+incentives to secure their spacecraft as those cyber attacks are only
+expected once it is too late - i.e. once a state of war exists.  Since
+a specific cyber attack vector can usually be mitigated once known,
+there is a strong incentive to avoid utilizing that attack until it
+can be maximally effective.  The single-use nature of zero-day cyber
+attacks could potentially make them less attractive than some of their
+physical counterparts.  However, at the same time, the potential reach
+and devastation of a ``Cyber Pearl Harbor'' style attack is also
+worthy of consideration.
+
+As was illustrated with the Russian hack of Viasat terminals, cyber
+attacks are a real and effective means of disabling strategic
+space-based capabilities without generating orbital debris.  A much
+more thorough treatment of this topic can be found in
+\href{https://www.researchgate.net/publication/341435541_Big_Risks_in_Small_Satellites_-_The_Need_for_Secure_Infrastructure_as_a_Service}{Big
+  Risks in Small Satellites} which not only outlines the core issues
+of economics but also outlines a market-friendly solution to that
+problem.
+
+Since many of the techniques described herein are already available to
+deployed commercial assets, cyber attacks pose a very real risk to
+national security, and a very real alternative to \acp{kasat}.
+
+
+\subsection{Ancillary Benefits}
+
+One of the advantages of a \ac{safe} weapons constellation is its
+inherently dual-purpose nature.  The \ac{safe} approaches described
+above require a set of spacecraft capabilities that could be leveraged
+for civilian (or at least peaceful) missions.  For example, the
+capabilities necessary to execute sat-to-sat cyber attacks would be
+sufficient to operate as a sat-to-sat communications relay.
+
+One of the largest financial, technological, operational, and
+regulatory risks to a constellation of smallsats is the communications
+system.  If an organization is incapable of communicating with their
+spacecraft, then they have effectively funded a very expensive brick.
+Licensing and spectrum coordination takes time, money, and introduces
+business and operational risk whereas operating in \ac{ism} bands
+(e.g. 2.4GHz or 5GHz on WiFi) does not.  A constellation of these
+interceptors could, effectively, act as radio relays for commercial
+satellites allowing them to launch without high-speed long-range radio
+systems but still have reliable communications.
+
+To act as a radio relay, an interceptor would need to be capable of
+getting close to a customer, it would need the flexibility in the
+\ac{rf} systems to ensure it can utilize the same frequency bands and
+protocols used by the customer, and it would need to be capable of
+high-speed communications with ground systems.  All of those
+capabilities are required of any interceptor capable of sat-to-sat
+cyber attacks and \ac{isr}.  The interceptor could fly formation with
+the customer and relay communications to/from.  The interceptor could
+also make occasional passes near the customer and use the
+limited-duration window to store-and-forward a large amount of data.
+\ac{hsi} missions, for example, are likely to collect large amounts of
+data that is not time sensitive.
+
+Constellations of inexpensive \ac{safe} interceptors could potentially
+provide economic and military benefits that extend beyond their core
+mission.  In addition to being the right choice environmentally, they
+are also the right choice economically, diplomatically, and
+militarily.

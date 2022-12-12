@@ -1,0 +1,78 @@
+\input{preamble}
+\input{commands}
+
+\begin{document}
+
+\input{acro}
+
+%% Use roman numerals for the executive summary
+\pagenumbering{roman}
+
+\input{exec_summary}
+
+\label{lastPageOfExecSummary}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{\fill}
+  {\Large \bfseries This Page Intentionally Left
+    Blank}\footnote{Always wanted an excuse to do this.}
+  \vspace*{\fill}
+\end{center}
+\newpage
+
+%% Reset acronyms for the paper
+\acresetall
+
+%% Switch to arabic numbers for the paper itself
+\pagenumbering{arabic}
+
+\input{intro}
+\input{asatOverview}
+
+
+%%% -- Thesis -- %%%
+\input{risk}
+\input{mitigation}
+
+
+%%% -- Support -- %%%
+\input{support}
+\input{recAlternative}
+\input{recGovernance}
+
+
+%%% -- Conclusion -- %%%
+\acresetall
+\input{conclusion}
+
+
+%%% -- Appendix -- %%%
+\newpage
+\appendix
+\title{Appedix}
+\date{}
+\author{}
+\subtitle{}
+\titlenote{}
+\maketitle
+\acresetall
+\input{gabby}
+\input{thermal}
+
+%%% -- Acknowledgements -- %%%
+\newpage
+\input{ack}
+
+%%% -- References -- %%%
+
+\raggedright
+\newpage
+\input{references}
+
+\newpage
+\input{reading}
+
+
+\end{document}
