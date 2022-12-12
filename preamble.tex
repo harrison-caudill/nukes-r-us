@@ -1,0 +1,264 @@
+\documentclass[10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages                                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Utility
+%\usepackage[letterpaper,margin=1in,showframe]{geometry}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{calc}		% allows us to do math with constants
+\usepackage{fancyhdr}		% Header/Footer control
+\usepackage{lastpage}           % Know where the last page is
+\usepackage{acronym}		% We use a lot of these
+\usepackage{hyphenat}		% exercise some control over hyphenations
+%%\usepackage[printwatermark]{xwatermark}
+\usepackage[parfill]{parskip}	% Full justify and control paragraphs
+%%\usepackage{lipsum}		% Standard lorem ipsum text
+\usepackage{ifthen}		% So we can be Turing Complete
+\usepackage{keyval}		% Optional args
+\usepackage{changepage}		% So we can change margins on the fly
+
+%%% Figures
+\usepackage{graphicx}		% So we can include graphics
+\usepackage{caption}		% Fancy captions
+
+%%% Fancy Tables
+\usepackage{booktabs}		% professional-quality tables
+\usepackage[table]{xcolor}	% Alternate row shading in tables
+\usepackage{longtable}		% We want a multi-page table
+\usepackage{array}		% Intra-Cell Alignment
+\usepackage{tabularray}
+
+%%% Fonts & Formatting
+\usepackage{titlesec}		% allows us to customize the titles
+\usepackage{nicefrac}		% compact symbols for 1/2, etc.
+\usepackage{amsfonts}		% blackboard math symbols
+\usepackage{microtype}		% microtypography to fix under/overfull
+\usepackage{needspace}		% So we can prevent page breaks
+\usepackage{wasysym}		% Lots of symbols
+
+%%% Confidential Border && Version Number
+\usepackage{ragged2e}		% Be nice to have some control on alignment
+\usepackage[absolute]{textpos}	% classified markers on the edges
+\usepackage{rotating}		% classified markers should be vertical
+\usepackage{transparent}	% Set the transparency of text
+\usepackage{background}         % Allow the border to be on all pages
+
+%%% URLs & References
+\usepackage{url}		% simple URL typesetting
+\usepackage[resetlabels,labeled]{multibib}% So we can have a recommended-reading bib
+\usepackage{fancyref}		% Internal references with Figure/Section/...
+
+% hyperlinks -- MUST BE THE LAST IMPORT
+\usepackage{bookmark}		% So we can futz about with the toc
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General Definitions & Styles                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Of course, we need our own custom colors
+\definecolor{myRed}{RGB}{196,0,49}
+\definecolor{myGray}{RGB}{60,60,60}
+
+%% Sets the line spacing
+%%\renewcommand{\baselinestretch}{1.2}
+
+%% \makeatletter
+%% \def\watermarkText#1{\gdef\@watermarkText{#1}}
+%% \def\@watermarkText{\@latex@error{No \noexpand\watermarkText given}\@ehc}
+%% \makeatother
+
+%% \watermarkText{foo}
+
+%% %% Let's give ourselves a nice watermark
+%% \ifthenelse{\equal{\watermarkText{}}{}}{%%
+%%   %% We don't have a watermark, ignore
+%% }{%%
+%%   \newwatermark[allpages,color=black!10,angle=45,scale=3,xpos=0,ypos=0]{\watermarkText{}}
+%% }
+
+%% Font selection
+\renewcommand{\rmdefault}{phv} %% Helvetica
+\fontfamily{\familydefault}
+
+%% We REALLY don't want it to have a bare section title.
+\widowpenalty=600
+\clubpenalty=200
+
+%% We want to allow subsection numbering, but we don't want the entire
+%% tree to be in the ToC
+\setcounter{tocdepth}{1}
+
+%% Format paragraphs
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+
+\def\copyrightText{
+
+  \tiny{%
+    This work is licensed under a Creative Commons Attribution 4.0
+    License.
+
+    For more information, see
+    http://creativecommons.org/licenses/by/4.0/
+  }%
+}
+
+\def\revText{
+  Revision: \input{rev}
+}
+
+% The manually-inserted distance between the last toc entry in a Part
+% and the concluding sections
+\newlength\tocPartSpacing
+\setlength\tocPartSpacing{2.25em plus 1pt}
+
+\newlength\sectionHeaderSpacing
+\setlength\sectionHeaderSpacing{.75em}
+
+\newlength\quoteIndent
+\setlength\quoteIndent{2em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Format the Title Block                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Format the title
+\titleformat{\title}					% command
+            {\large}					% format
+            {}						% label
+            {0em}					% sep
+            {}						% before-code
+            {}						% after-code
+
+%% Doing this requires mucking about with an internal macro, whose
+%% name starts with '@'.  The '@' character is typically category code
+%% (catcode) 12, which is a non-letter character.  To muck about with
+%% it, we must first switch that character to catcode 11.  When we're
+%% done, we can switch it back.  Hence the make-at-letter vs
+%% make-at-other commands below.
+
+\makeatletter
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\@subtitle{\@latex@error{No \noexpand\subtitle given}\@ehc}
+\def\titlenote#1{\gdef\@titlenote{#1}}
+\def\@titlenote{\@latex@error{No \noexpand\titlenote given}\@ehc}
+\makeatother
+
+%% Set the title format
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\large\sffamily\@titlenote}\par
+    {\LARGE\bfseries\sffamily\color{myRed}\@title}\par
+    {\large\sffamily\@subtitle}\par
+    \ifthenelse{\equal{\@author}{} \AND \equal{\@date}{}}{}{%
+      {\normalsize\@author\ \ --\ \ \@date}
+    }
+  \end{center}
+  \vspace{0.15in}
+}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Section Formatting                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% titleformat{left}{before}{after}
+%%             <nominal> plus <add up to> minus <subtract up to>
+
+%% Section
+\titleformat*{\section
+}{\needspace{1in}\Large\sffamily\color{myRed}
+}
+\titlespacing{\section
+}{0pt
+}{10pt plus 2pt minus 2pt
+}{4pt plus 2pt minus 2pt
+}
+
+%% SubSection
+\titleformat*{\subsection              % command
+}{\needspace{.1in}\large\color{myGray} % format
+}
+\titlespacing{\subsection
+}{0pt
+}{8pt plus 2pt minus 2pt
+}{4pt plus 2pt minus 2pt
+}
+
+%% SubSubSection
+\titleformat*{\subsection              % command
+}{\needspace{.1in}\large\color{myGray} % format
+}
+\titlespacing{\subsubsection
+}{0pt
+}{8pt plus 2pt minus 2pt
+}{4pt plus 2pt minus 2pt
+}
+
+%% Paragraph
+\titleformat*{\paragraph
+}{\bfseries
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Header/Footer                                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+
+\fancypagestyle{firstPage}{%
+  \fancyhf{}
+  \fancyfoot[L]{\copyrightText}
+  \fancyfoot[R]{\revText}
+  \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
+}
+
+\fancypagestyle{theRest}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage{} of \pageref*{LastPage}}
+  \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
+}
+
+\fancypagestyle{execSummary}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage{} of \pageref*{lastPageOfExecSummary}}
+  \textBorder[leftText=Pre-Release Draft,rightText=Do Not Distribute]{}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography Stuff                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcites{Rec}{Recommended Reading}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitions                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Anti Satellite Weapons}
+\subtitle{A Critical Examination with Recommendations}
+\author{Harrison Caudill (harrison@hypersphere.org)}
+\date{December 1, 2022}
+
+%% Set up link coloring
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    citecolor=blue,
+    urlcolor=cyan,
+    pdftitle={\title{}, \subtitle{}},
+    pdfpagemode=FullScreen,
+}
+

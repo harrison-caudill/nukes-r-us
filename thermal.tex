@@ -1,0 +1,109 @@
+\section{Thermal Imaging Evasion}
+
+
+The United States uses the \ac{sm3} for \ac{icbm} interception.  The
+kinetic warhead employs a \ac{lwir} camera in the nose for target
+identification.  While the efficacy has been questioned(cite the
+nytimes article from the docs paper), decoy systems are frequently
+actively cooled to fool the thermal imaging system(abm-me-not).  A
+naive model was developed to approximate the necessary cooling to
+result in a signal-to-noise ratio (SNR) of roughly 1 (meaning equal
+amounts of signal and noise give-or-take a factor of 5).  Two primary
+sources of thermal energy were considered 1) reflection of solar
+emissions and 2) thermal emissions.  The mission concept assumes a
+50cm x 50cm ``shield'' that can be oriented by the spacecraft to face
+the incoming missile.  As shown below, the shield would need to have a
+reflectivity of <= 1\% in the long-wave infrared band, and would need
+to be cooled to <= 95 deg Kelvin (-178 C).  Hydrogen and Oxygen
+propellants, as well as Argon, Nitrogen, and Helium are all suitable
+for active cooling, while methane falls slightly short of the required
+boiling temperature.
+
+This model is naive, has not received engineering review, and may well
+contain errors.  The point of comparison employed by a more complete
+study of the topic done by the Union of Concerned Scientists discussed
+a decoy at 77K, as opposed to the 95K discussed here.  Assumptions can
+be found in figure \ref{figure::thermal::assumptions} and the resulting
+budget in figure \ref{figure::thermal::budget}
+
+\begin{figure}[ht!]
+  \centering
+
+  \begin{tblr}[
+    ]{%
+      colspec = {Q[c,m]|Q[c,m]|Q[c,m]},
+      row{odd} = {gray!25}, row{even} = {white},
+      row{1} = {gray!65},
+    }
+    {\bf Item}
+    & {\bf Value}
+    & {\bf Unit}
+    \\
+
+    KKV Lens Radius & 7 & $cm$ \\
+    Reflectance & 0.01 & \\
+    Fore-Optics Efficiency & 0.95 & \\
+    Focusing-Optics Efficiency & 0.95 & \\
+    Sensor Quantum Efficiency & 0.8 & \\
+    Read Out Noise & 50 & $electrons$ \\
+    Shield Area & 0.25 & $m^2$ \\
+    Shield Temperature & 95 & $^{\circ}K$ \\
+    Camera Frame Rate & 120 & $Hz$ \\
+    KKV Range & 500 & $km$ \\
+
+  \end{tblr}
+
+  \caption{Initial assumptions in thermal imaging SNR model.}
+  \label{figure::thermal::assumptions}
+\end{figure}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tblr}[
+    ]{%
+      colspec = {Q[c,m]|Q[c,m]|Q[c,m]},
+      row{odd} = {gray!25}, row{even} = {white},
+      row{1} = {gray!65},
+    }
+    {\bf Item}
+    & {\bf Value}
+    & {\bf Unit}
+    \\
+
+    Incident Solar Power & 1.98 & $dBW$ \\
+    Reflected Solar Power & -18 & $dBW$ \\
+    Thermal Radiation Emitted & -19.6 & $dBW$ \\
+    Power Flux at Lens & -138 & $dB\frac{W}{m^2}$ \\
+    Power at Lens & -156 & $dBW$ \\
+    Shutter Time & 8.33 & $ms$ \\
+    Signal Energy & -177 & $dBJ$ \\
+    SNR & 1.85 & $dB$ \\
+    SNR & 1.53:1 & \\
+
+  \end{tblr}
+
+  \caption{Resulting SNR budget.}
+  \label{figure::thermal::budget}
+\end{figure}
+
+\subsection*{Consequential Factors}
+\begin{itemize}
+
+\item {\bf Distance between interceptor and target:} $R^2$ relationship, so
+  2x decrease in distance results in 4x difference in SNR
+  
+\item {\bf Frame rate of the interceptor's camera:} Linear relationship, so
+  a 2x decrease in framerate results in a 2x increase in SNR
+  
+\item {\bf Reflectance:} Linear relationship, so a 2x increase in
+  reflectance of the shield results in a 2x increase in SNR
+
+\item {\bf Lens radius:} $R^2$ relationship, so 2x increase in lens
+  radius results in 4x difference in SNR
+
+\item {\bf Shield Temperature:} Energy is radiated as a function of
+  $T^4$ making the shield temperature highly impactful.  Liquid oxygen
+  may get the job done, but it's probably better, as the Union of
+  Concerned Scientists suggests, to utilize liquid nitrogen.
+
+\end{itemize}

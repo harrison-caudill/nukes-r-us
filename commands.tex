@@ -1,0 +1,145 @@
+%% \newenvironment{packedEnum}{
+%% \begin{enumerate}
+%%   \setlength{\itemsep}{0pt}
+%%   \setlength{\parskip}{0pt}
+%%   \setlength{\parsep}{0pt}
+%% }{\end{enumerate}}
+
+%% \newenvironment{packedItem}{
+%% \begin{itemize}
+%%   \setlength{\itemsep}{0pt}
+%%   \setlength{\parskip}{0pt}
+%%   \setlength{\parsep}{0pt}
+%% }{\end{itemize}}
+
+%% \def\bul{$\bullet$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Confidential Border                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength\classifiedTextHeight
+\setlength\classifiedTextHeight{27pt} %% sigh...just...don't ask...
+
+\newlength\classifiedRtStart
+\setlength\classifiedRtStart{\paperwidth-0.25in-\classifiedTextHeight}
+
+%% Default arguments for the border
+\makeatletter
+\define@key{borderArgs}{leftText}{\def\leftText{#1}}
+\define@key{borderArgs}{rightText}{\def\rightText{#1}}
+\define@key{borderArgs}{borderOpacity}{\def\borderOpacity{#1}}
+\define@key{borderArgs}{borderColor}{\def\borderColor{#1}}
+\setkeys{borderArgs}{%%
+  leftText=Classified,
+  rightText=Classified,
+  borderOpacity=0.25,
+  borderColor=red
+}
+\makeatother
+
+\newcommand{\textBorder}[1][]{
+
+  \setkeys{borderArgs}{#1}
+
+  \begin{textblock*}{-3.1415in}(.25in, 0in)
+    \begin{turn}{90}
+      \parbox{\paperheight}{
+        \begin{center}
+          {\Huge
+            \bf
+            \transparent{\borderOpacity}
+            \color{\borderColor}
+            \leftText}
+        \end{center}
+      }
+    \end{turn}
+  \end{textblock*}
+  \begin{textblock*}{-3.1415in}(\classifiedRtStart, 0in)
+    \begin{turn}{-90}
+      \parbox{\paperheight}{
+        \begin{center}
+          {\Huge
+            \bf
+            \transparent{\borderOpacity}
+            \color{\borderColor}
+            \rightText}
+        \end{center}
+      }
+    \end{turn}
+  \end{textblock*}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Basic Block Quote                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{blockquote}{
+  \begin{adjustwidth}{\quoteIndent}{\quoteIndent}
+}{%
+  \end{adjustwidth}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Possessive Acronyms                                                       %%
+%%                                                                           %%
+%% Thank you hcbrown:                                                        %%
+%%   https://latex.org/forum/viewtopic.php?t=9592                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand*{\acpos}{\AC@starredfalse\protect\@acpos}%
+\WithSuffix\newcommand\acpos*{\AC@starredtrue\protect\@acpos}%
+\newcommand{\@acpos}[1]{%
+  \ifAC@dua
+     \ifAC@starred\aclpos*{#1}\else\aclpos{#1}\fi%
+  \else
+   \expandafter\ifx\csname ac@#1\endcsname\AC@used
+      \ifAC@starred\acspos*{#1}\else\acspos{#1}\fi%
+   \else
+      \ifAC@starred\acfpos*{#1}\else\acfpos{#1}\fi%
+   \fi
+  \fi}
+
+
+\newcommand*{\acspos}{\AC@starredfalse\protect\acspaos}%
+\WithSuffix\newcommand\acspos*{\AC@starredtrue\protect\acspaos}%
+\newcommand*{\acspaos}[1]{%
+   \texorpdfstring{\protect\@acspos{#1}}{#1's}}
+\newcommand*{\@acspos}[1]{%
+   \acsfont{\AC@acs{#1}'s}%
+   \ifAC@starred\else\AC@logged{#1}\fi}
+
+\newcommand*{\aclpos}{\AC@starredfalse\protect\@aclpos}%
+\WithSuffix\newcommand\aclpos*{\AC@starredtrue\protect\@aclpos}%
+\newcommand*{\@aclpos}[1]{%
+   \AC@aclos{#1}'s%
+   \ifAC@starred\else\AC@logged{#1}\fi}
+
+
+\newcommand*{\acfpos}{\AC@starredfalse\protect\acfpaos}%
+\WithSuffix\newcommand\acfpos*{\AC@starredtrue\protect\acfpaos}%
+\newcommand*{\acfpaos}[1]{%
+   \texorpdfstring{\protect\@acfpos{#1}}{\AC@acl{#1}'s (#1's)}}
+\newcommand*{\@acfpos}[1]{%
+   \ifAC@footnote
+      \acsfont{\AC@acs{#1}'s}%
+      \footnote{\AC@placelabel{#1}\AC@acl{#1}'s{}}%
+   \else
+      \acffont{%
+         \AC@placelabel{#1}\AC@acl{#1}'s%
+         \nolinebreak[3] %
+         \acfsfont{(\acsfont{\AC@acs{#1}'s})}%
+         }%
+   \fi
+   \ifAC@starred\else\AC@logged{#1}\fi}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% General Utility                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\derX{{\bf \CIRCLE}}
