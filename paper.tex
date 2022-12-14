@@ -8,19 +8,28 @@
 %% Use roman numerals for the executive summary
 \pagenumbering{roman}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Executive Summary                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \input{exec_summary}
 
-\label{lastPageOfExecSummary}
-
+%% Blank page between the executive summary and the main paper
 \newpage
 \thispagestyle{empty}
 \begin{center}
   \vspace*{\fill}
-  {\Large \bfseries This Page Intentionally Left
-    Blank}\footnote{Always wanted an excuse to do this.}
+          \noindent {\Large \bfseries This Page Intentionally Left
+            Blank}\footnote{If this document is printed double-sided,
+          then the first page of the main paper will appear on the
+          front rather than the back.}
   \vspace*{\fill}
 \end{center}
 \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Main Paper                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Reset acronyms for the paper
 \acresetall
@@ -48,6 +57,10 @@
 \input{conclusion}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Appendix                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% -- Appendix -- %%%
 \newpage
 \appendix
@@ -60,6 +73,11 @@
 \acresetall
 \input{gabby}
 \input{thermal}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% References etc.                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% -- Acknowledgements -- %%%
 \newpage
